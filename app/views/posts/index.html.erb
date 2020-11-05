@@ -20,8 +20,8 @@
                    
 
                     <div class="post-details">
-                        <p><strong> <%= post.total_likes %> likes </strong></p>
-                        <p><strong> <%= link_to post.user.username, profile_path(post.user.username), class: "text-dark" %> </strong></p>
+                        <p><strong id="post-<%= post.id %>-likes"> <%= post.total_likes %> likes </strong></p>
+                        <p><strong id="post-<%= post.id %>-comments"> <%= link_to post.user.username, profile_path(post.user.username), class: "text-dark" %> </strong></p>
                         <%= simple_format post.description %>
 
                         <p class="text-muted"> <%= time_ago_in_words post.created_at %> ago</p>
@@ -32,8 +32,10 @@
         <div class="col-4">
             <div class="account-summary">
                 <p>
-                <%= link_to image_tag(current_user.image.thumb.url, class: "img-circle"), profile_path(current_user.username) if current_user.image %>
+                <% if current_user.image.thumb.url %>
+                <%= link_to image_tag(current_user.image.thumb.url, class: "img-circle"), profile_path(current_user.username) %>
                 <strong> <%= current_user.username %></strong><br>
+                <% end %>
                 </p>
                 <p>
                 <%= current_user.full_name %>
@@ -43,6 +45,7 @@
             <div class="follower-suggestions">
                 <%= link_to "View all", "#", class: "float-right text-dark" %>
                 <p class="text-muted"> Suggestions for you </p>
+                <%= render "users/followers_suggestions" %>
             </div>
         </div>
     </div>

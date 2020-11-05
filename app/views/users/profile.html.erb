@@ -1,9 +1,11 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-4">
+        <% if current_user.image.thumb.url %>
+            <div class="col-4">
             <%= image_tag @user.image.url, width: "200px", class: "img-circle profile-pic" %>
         </div>
+        <% end %>
 
         <div class="col-8 text-left">
             <h1> <%= @user.full_name %> </h1>
