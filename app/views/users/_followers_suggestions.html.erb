@@ -5,6 +5,10 @@
                 <%= link_to profile_picture(user, 40), profile_path(user.username) %>
             </div>
             <div class="col-sm-9 col-lg-10">
+                <%= form_tag follow_account_path, method: :post, class: "float-right" do %>
+                    <%= hidden_field_tag :follow_id, user.id %>
+                    <%= submit_tag "Follow", class: "btn btn-info" %>
+                <% end %>
                 <%= link_to user.username, profile_path(user.username), class: "text-dark" %> 
                 <p class="text-muted"><%= user.created_at > 2.days.ago ? "New to Igram" : "Followed by X users" %> </p>
             </div>

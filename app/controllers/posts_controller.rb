@@ -4,7 +4,14 @@ class PostsController < ApplicationController
   def index
     #dashboard- load all the posts
     @posts = Post.active
-    @followers_suggestions = User.where.not(id: current_user.id)
+
+    #list of ids already followed by the current user
+    following_ids = Follower.where(follower_id: current_user.id).map(&:following_id)
+
+    #add current_user id to the list to make sure current_user does not show up on the suggestions
+    following_ids << current_user.id
+
+    @followers_suggestions = User.where.not(id: following_ids)
   end
 
   def new

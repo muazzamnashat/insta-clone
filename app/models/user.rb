@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :likes
+  has_many :followers, class_name: :Follower, foreign_key: :following_id
+  has_many :followings, class_name: :Follower, foreign_key: :follower_id
+
   mount_uploader :image, ImageUploader
 
   def self.from_omniauth(auth)

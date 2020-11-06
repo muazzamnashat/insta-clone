@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   # match "/auth/github/callback", to: "registrations#create", via: [:get, :post]
   get "/profile/:username", to: "users#profile", as: :profile
   get "/post/like/:post_id", to: "likes#save_like", as: :like_post
+  post "/follow/account", to: "users#follow_account", as: :follow_account
   resources :posts
 end
