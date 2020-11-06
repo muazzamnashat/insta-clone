@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   def index
     #dashboard- load all the posts
     @posts = Post.active
+    @followers_suggestions = User.where.not(id: current_user.id)
   end
 
   def new
