@@ -46,14 +46,12 @@
 
 }
 
-.btn-comment {
-border:none;
-background: #fff ;
-//    outline:none;
-   color: #0095f6;
-}
-
 .post-comment:focus {
     box-shadow: none !important;
 }
 
+.btn-custom {
+    background: transparent;
+    border: 2px, solid #999;
+    border-radius: 4px;
+}
