@@ -38,3 +38,22 @@
         color: #999
     }
 }
+
+.comment-box {
+    // padding: 15px;
+    background: #fff ;
+    border: 1px solid #ddd;
+
+}
+
+.btn-comment {
+border:none;
+background: #fff ;
+//    outline:none;
+   color: #0095f6;
+}
+
+.post-comment:focus {
+    box-shadow: none !important;
+}
+

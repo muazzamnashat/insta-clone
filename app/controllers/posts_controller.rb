@@ -5,6 +5,8 @@ class PostsController < ApplicationController
     #dashboard- load all the posts
     @posts = Post.active
 
+    @comment = Comment.new
+
     #list of ids already followed by the current user
     following_ids = Follower.where(follower_id: current_user.id).map(&:following_id)
 
@@ -31,7 +33,7 @@ class PostsController < ApplicationController
   def show
   end
 
-  def delete
+  def destroy
   end
 
   def update
