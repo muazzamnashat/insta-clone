@@ -5,7 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable
 
   has_many :posts
+  has_many :comments
   has_many :likes
+  has_many :posts, through: :comments
   has_many :followers, class_name: :Follower, foreign_key: :following_id
   has_many :followings, class_name: :Follower, foreign_key: :follower_id
 
