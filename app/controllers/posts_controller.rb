@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_post, only: [:show]
 
   def index
     #dashboard- load all the posts
@@ -31,6 +32,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
   end
 
   def destroy
@@ -40,6 +42,10 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def set_post
+    @post = Post.find(params[:id]) if params[:id].present?
+  end
 
   def post_params
     params.require(:post).permit(:image, :image_cache, :description)

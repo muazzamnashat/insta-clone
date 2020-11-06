@@ -23,7 +23,9 @@
 
                         <div class="post-actions"> 
                             <i class="fa fa-heart like-<%= post.id %> <%= "active" if post_liked_by_user?(post.id) %> fa-2x post-like" data-id="<%= post.id %>"> </i>
-                            <i class="fa fa-comment fa-2x post-comment"> </i>
+                            <%= link_to post_path(post.id) do %> 
+                            <i class="fa fa-comment fa-2x post-comment"> </i> 
+                            <% end %>
                         </div>
 
                         <p><strong id="post-<%= post.id %>-likes"> <%= post.total_likes %> likes </strong></p>
@@ -54,14 +56,10 @@
         <!-- Write your comments here -->
         <div class="col-4">
             <div class="account-summary">
-                <p>
-                <% if current_user.image.thumb.url %>
-                <%= link_to image_tag(current_user.image.thumb.url, class: "img-circle"), profile_path(current_user.username) %>
-                <strong> <%= current_user.username %></strong><br>
-                <% end %>
-                </p>
-                <p>
-                <%= current_user.full_name %>
+                <p class="m-0">
+                    <%= link_to image_tag(current_user.image.thumb.url, class: "img-circle float-left m-r-15"), profile_path(current_user.username) if current_user.image.thumb.url %>
+                    <strong> <%= current_user.username %></strong><br>
+                    <%= current_user.full_name %>
                 </p>
             </div>
 

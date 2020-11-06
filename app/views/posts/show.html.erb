@@ -1,2 +1,52 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<%= javascript_include_tag "posts.js" %>
+
+
+<div class="container">
+    <div class="row"> 
+        <div class="col-8">
+            <div class="insta-post">
+                    <%= image_tag @post.image.url, class: "img img-fluid" if @post.image.present? %>   
+            </div>
+        </div>
+        <div class="col-4">
+            
+                <div class="post-meta"> 
+                    <%= link_to image_tag(@post.user.image.thumb.url, class: "img-circle"), profile_path(@post.user.username) %> 
+                    <%= link_to @post.user.username, profile_path(@post.user.username), class: "text-dark" %> 
+                </div>
+
+
+                <div class="post-details">
+                    <%= simple_format @post.description %>
+
+                    <div class="post-actions"> 
+                        <i class="fa fa-heart like-<%= @post.id %> <%= "active" if post_liked_by_user?(@post.id) %> fa-2x post-like" data-id="<%= @post.id %>"> </i>
+                        <i class="fa fa-comment fa-2x post-comment"> </i>
+                    </div>
+
+                    <p><strong id="post-<%= @post.id %>-likes"> <%= @post.total_likes %> likes </strong></p>
+                    <p><strong id="post-<%= @post.id %>-comments"> <%= link_to @post.user.username, profile_path(@post.user.username), class: "text-dark" %> </strong></p>
+                    <p class="text-muted"> <%= time_ago_in_words @post.created_at %> ago</p>
+
+                    <div class="comments-feed">
+                        <%= render "posts/comments", post: @post %>
+                    <div>
+                </div>
+
+                    
+                <div class="comment-box">
+                    <%= form_for @comment do |f| %> 
+                        <%= f.hidden_field :post_id, value: @post.id %>
+                        <div class="input-group">
+                        <%= f.text_field :comment, placeholder: "Add a comment ...", class: "form-control post-comment" %>
+                            <div class="input-group-append">
+                                <%= f.submit "Post", class: "btn btn-success float-right" %>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+        </div>
+    </div> 
+</div>
+
