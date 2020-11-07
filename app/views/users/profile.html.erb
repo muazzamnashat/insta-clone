@@ -39,6 +39,12 @@
         <% @posts.each do |post| %>
             <div class="col-4">
                 <div class="insta-post">
+                    <div class="post_stats">
+                        <div class="inner">
+                            <%= post.total_likes %> likes
+                            <%= post.total_comments %> comments
+                        </div>
+                    </div>
                     <%= link_to image_tag(post.image.url, class: "img img-fluid"), post_path(post) %>
                 </div>
             </div>

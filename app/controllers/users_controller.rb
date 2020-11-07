@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def profile
-    @posts = @user.posts.active
+    @posts = Post.where(user_id: current_user.id)
   end
 
   def new
