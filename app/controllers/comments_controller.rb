@@ -5,9 +5,11 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user = current_user if user_signed_in?
     if @comment.save
-      redirect_to posts_path
+      # added this extra hidden return_to field only to the show page to make sure the comment request is goin from show page so we redirect user to same page
+      return_url = params[:comment][:return_to].present? ? post_path(@comment.post_id) : posts_path
+      redirect_to return_url, flash: { success: "Comment was created successfully!" }
     else
-      redirect_to new_post_path, flash: { danger: "Post was not saved!" }
+      redirect_to posts_path, flash: { danger: "Post was not saved!" }
     end
   end
 

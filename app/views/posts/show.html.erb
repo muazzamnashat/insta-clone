@@ -24,11 +24,10 @@
 
                     <div class="post-actions"> 
                         <i class="fa fa-heart like-<%= @post.id %> <%= "active" if post_liked_by_user?(@post.id) %> fa-2x post-like" data-id="<%= @post.id %>"> </i>
-                        <i class="fa fa-comment fa-2x post-comment"> </i>
+                        <i class="fa fa-comment fa-2x post-comment" id="post-comment"> </i>
                     </div>
 
                     <p><strong id="post-<%= @post.id %>-likes"> <%= @post.total_likes %> likes </strong></p>
-                    <p><strong id="post-<%= @post.id %>-comments"> <%= link_to @post.user.username, profile_path(@post.user.username), class: "text-dark" %> </strong></p>
                     <p class="text-muted"> <%= time_ago_in_words @post.created_at %> ago</p>
                 </div>
 
@@ -36,6 +35,8 @@
                 <div class="comment-box">
                     <%= form_for @comment do |f| %> 
                         <%= f.hidden_field :post_id, value: @post.id %>
+                        <!-- added this extra hidden return field only to the show page to make sure the comment request is goin from show page so we redirect user to same page-->
+                        <%= f.hidden_field :return_to, value: "post" %>
                         <div class="input-group">
                         <%= f.text_field :comment, placeholder: "Add a comment ...", class: "form-control post-comment" %>
                             <div class="input-group-append">
