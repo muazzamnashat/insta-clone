@@ -1,5 +1,5 @@
 <% post.comments.each do |comment| %>
     <strong> <%= comment.user.username %> </strong>
     <%= comment.comment %><br>
-   
+   <p class="text-muted"> <%= time_ago_in_words comment.created_at %> </p>
 <% end %>
