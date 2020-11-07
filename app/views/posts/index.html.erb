@@ -34,7 +34,7 @@
                         <%= simple_format post.description %>
 
                         <p class="text-muted"> <%= time_ago_in_words post.created_at %> ago</p>
-                        <%= render "posts/comments", post: post %>
+                        <%= render "posts/comments", post: post %> 
                     </div>
 
                       
@@ -57,7 +57,8 @@
         <div class="col-4">
             <div class="account-summary">
                 <p class="m-0">
-                    <%= link_to image_tag(current_user.image.thumb.url, class: "img-circle float-left m-r-15"), profile_path(current_user.username) if current_user.image.thumb.url %>
+                 <!--   <%= link_to image_tag(current_user.image.thumb.url, class: "img-circle float-left m-r-15"), profile_path(current_user.username) if current_user.image.thumb.url %> -->
+                    <%= link_to profile_picture(current_user, 40), profile_path(current_user.username) %>
                     <strong> <%= current_user.username %></strong><br>
                     <%= current_user.full_name %>
                 </p>

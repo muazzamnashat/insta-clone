@@ -50,16 +50,6 @@
     box-shadow: none !important;
 }
 
-.btn-custom {
-    background:transparent;
-    border: 2px solid #ddd !important;
-    border-radius: 4px !important;
-}
-
-.btn-custom:hover {
-    background:#ddd !important;
-
-}
 
 .comments-feed { 
     height: 300px;
@@ -71,4 +61,29 @@
     border-top: 1px solid #ddd;
     padding-top: 20px;
     margin-top: 20px;
+}
+
+.post-square {
+    height: 290px;
+    width: 290px;
+    overflow: hidden;
+    background-size: cover !important;
+}
+
+.post-stats {
+    width: 100%;
+    height: 100%;
+    background:rgba(0,0,0,0.5);
+    text-align: center;
+    color: #fff;
+    display: none;
+    .inner {
+        margin-top: 45%;
+    }
+}
+
+.insta-post:hover {
+    .post-stats {
+        display: block; 
+    }
 }

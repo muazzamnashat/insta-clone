@@ -6,7 +6,9 @@ class UsersController < ApplicationController
   end
 
   def profile
-    @posts = Post.where(user_id: current_user.id)
+    # binding.pry
+    @user = User.find_by(username: params[:username])
+    @posts = Post.where(user_id: @user.id)
   end
 
   def new

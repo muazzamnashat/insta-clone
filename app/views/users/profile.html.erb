@@ -16,7 +16,7 @@
 
             <div class="row profile-stats">
                 <div class="col-4"> 
-                    <%= @user.posts.count %> posts
+                    <%= @posts.count %> posts
                 </div>
                 <div class="col-4">
                     <%= @user.followers.count %> followers  
@@ -29,7 +29,7 @@
             <p> <%= @user.full_name %> </p>
             <p> <%= simple_format @user.description %> </p>
 
-            <p> <%= link_to @user.website if @user.website %> </p>
+            <p> <%= link_to @user.website if @user.website.present? %> </p>
 
         </div>
     </div>
@@ -38,14 +38,16 @@
     <div class="row profile-posts">
         <% @posts.each do |post| %>
             <div class="col-4">
-                <div class="insta-post">
-                    <div class="post_stats">
-                        <div class="inner">
-                            <%= post.total_likes %> likes
-                            <%= post.total_comments %> comments
-                        </div>
-                    </div>
+                <div class="insta-post post-square" style= "backgroud: url(<%= post.image.url %>) no-repeat center top">
                     <%= link_to image_tag(post.image.url, class: "img img-fluid"), post_path(post) %>
+                    <%= link_to post_path(post) do %>
+                        <div class="post-stats">
+                            <div class="inner">
+                                <i class="fa fa-heart"> </i><%= post.total_likes %> likes 
+                                    <i class="fa fa-comment m-l-15"> </i><%= post.total_comments %> comments
+                            </div>
+                        </div>
+                        <% end %>
                 </div>
             </div>
         <% end %>
