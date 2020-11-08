@@ -61,7 +61,7 @@ group :development, :test do
   gem "dotenv-rails"
   gem "omniauth"
   gem "omniauth-github"
-
+  gem "omniauth-facebook"
   #Heroku-friendly Rails app configuration using ENV and a single YAML file
   gem "figaro"
 end
