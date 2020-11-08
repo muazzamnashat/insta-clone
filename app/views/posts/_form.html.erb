@@ -1,4 +1,10 @@
-<%= form_for @post, html: { multipart: true } do |f| %>
+<% if @post.errors.any? %>
+        <h5 class="error"><%= @post.errors.full_messages.to_sentence %></h5>
+<% end %>
+
+<!-- Using form with and url to past custom url so that the request can be routed to appropriate route -->
+
+<%= form_with model: post, url: url, local: true, html: { multipart: true } do |f| %>
  
  <div class="form-group">
  <%= f.label :image %>

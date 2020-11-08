@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   get "/post/like/:post_id", to: "likes#save_like", as: :like_post
   post "/follow/account", to: "users#follow_account", as: :follow_account
   resources :users do
-    resources :posts, only: [:show, :new, :edit]
+    resources :posts, only: [:show, :create, :new, :edit, :destroy, :update]
   end
-  resources :posts
+  resources :posts, only: [:index]
   resources :comments, only: [:create, :destroy, :update]
+
+  post "/posts", to: "posts#create"
 end

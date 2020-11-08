@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  # before_action :set_post, only: [:show]
+  before_action :set_post, only: [:edit, :update, :destroy]
 
   def index
     #dashboard- load all the posts
@@ -24,10 +24,10 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user if user_signed_in?
-    if @post.save
-      redirect_to posts_path, flash: { success: "Post was created successfully!" }
+    if @post.save && @post.valid?
+      redirect_to posts_path
     else
-      redirect_to new_post_path, flash: { danger: "Post was not saved!" }
+      render "new"
     end
   end
 
@@ -42,16 +42,30 @@ class PostsController < ApplicationController
     end
   end
 
-  def destroy
+  def edit
   end
 
   def update
+    # binding.pry
+    if @post
+      @post.update(post_params)
+      if @post.errors.any?
+        render "edit"
+      else
+        redirect_to user_post_path(@post.user_id, @post.id)
+      end
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
   end
 
   private
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = Post.find_by(id: params[:id])
     # if params[:id].present?
   end
 
