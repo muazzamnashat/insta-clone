@@ -10,7 +10,7 @@
                     <%= submit_tag "Follow", class: "btn btn-info" %>
                 <% end %>
                 <%= link_to user.username, profile_path(user.username), class: "text-dark" %> 
-                <p class="text-muted"><%= user.created_at > 2.days.ago ? "New to Igram" : "Followed by X users" %> </p>
+                <p class="text-muted"><%= user.created_at > 2.days.ago ? "New to Igram" : "Followed by #{user.followers.count} users" %> </p>
             </div>
         </div>
     </div>

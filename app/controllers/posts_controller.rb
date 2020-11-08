@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_post, only: [:show]
+  # before_action :set_post, only: [:show]
 
   def index
     #dashboard- load all the posts
@@ -33,6 +33,13 @@ class PostsController < ApplicationController
 
   def show
     @comment = Comment.new
+    @post = Post.find_by_id(params[:id])
+    user = User.find_by_id(params[:user_id])
+    # binding.pry
+
+    if !@post || !user
+      redirect_to posts_path
+    end
   end
 
   def destroy
@@ -44,7 +51,8 @@ class PostsController < ApplicationController
   private
 
   def set_post
-    @post = Post.find(params[:id]) if params[:id].present?
+    @post = Post.find(params[:id])
+    # if params[:id].present?
   end
 
   def post_params

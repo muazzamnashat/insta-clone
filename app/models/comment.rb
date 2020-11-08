@@ -12,10 +12,10 @@ class Comment < ApplicationRecord
   private
 
   def increase_post_comment_counter
-    Post.find(self.post_id).increment(:total_comments).save
+    Post.find_by_id(self.post_id).increment(:total_comments).save
   end
 
   def decrease_post_comment_counter
-    Post.find(self.post_id).decrement(:total_comments).save
+    Post.find_by_id(self.post_id).decrement(:total_comments).save
   end
 end

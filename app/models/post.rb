@@ -4,8 +4,8 @@ class Post < ApplicationRecord
   before_create :set_active
 
   belongs_to :user
-  has_many :likes
-  has_many :comments
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :users, through: :comments
 
   scope :active, -> { where active: true }
