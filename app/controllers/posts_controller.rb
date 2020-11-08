@@ -43,6 +43,10 @@ class PostsController < ApplicationController
   end
 
   def edit
+    # binding.pry
+    if !@post || @post.user_id != current_user.id
+      redirect_to posts_path
+    end
   end
 
   def update
