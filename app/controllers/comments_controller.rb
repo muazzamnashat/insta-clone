@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_comment, only: [:edit, :update, :destroy]
 
   def create
     @comment = Comment.new(comment_params)
@@ -14,12 +15,20 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    user = @comment.user_id
+    post = @comment.post_id
+    @comment.destroy
+    redirect_to user_post_path(user, post)
   end
 
   def update
   end
 
   private
+
+  def set_comment
+    @comment = Comment.find_by_id(params[:id])
+  end
 
   def comment_params
     params.require(:comment).permit(:comment, :post_id, :return_to)
