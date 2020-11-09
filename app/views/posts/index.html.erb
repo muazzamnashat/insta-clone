@@ -31,7 +31,7 @@
                             <% end %>
                         </div>
 
-                        <p><strong id="post-<%= post.id %>-likes"> <%= pluralize(post.total_likes, "like") %> </strong></p>
+                        <p><strong id="post-<%= post.id %>-likes"> <%= link_to pluralize(post.total_likes, "like"), like_list_path(post.id), class: "text-dark" %> </strong></p>
                         <p><strong id="post-<%= post.id %>-comments"> <%= link_to post.user.username, profile_path(post.user.username), class: "text-dark" %> </strong></p>
                         
                         <%= simple_format post.description %>

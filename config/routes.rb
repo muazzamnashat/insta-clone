@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :destroy, :update]
 
   post "/posts", to: "posts#create"
+  get "/posts/:id/likes", to: "likes#list", as: :like_list
 end

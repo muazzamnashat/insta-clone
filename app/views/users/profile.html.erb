@@ -16,10 +16,10 @@
 
             <div class="row profile-stats">
                 <div class="col-4"> 
-                    <%= @posts.count %> posts
+                    <%= pluralize(@posts.count, "post") %> 
                 </div>
                 <div class="col-4">
-                    <%= @user.followers.count %> followers  
+                    <%= pluralize(@user.followers.count, "follower") %>   
                 </div>
                  <div class="col-4">
                     <%= @user.followings.count %> following  

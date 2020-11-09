@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   default_scope { order created_at: :desc }
   mount_uploader :image, ImageUploader
-  before_create :set_active
+  before_create :set_active, :set_total_likes
 
   validates :description, :image, presence: true
 
@@ -14,5 +14,9 @@ class Post < ApplicationRecord
 
   def set_active
     self.active = true
+  end
+
+  def set_total_likes
+    self.total_likes = 0
   end
 end
