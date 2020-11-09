@@ -21,7 +21,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-white static-top">
     <div class="container">
       <a class="navbar-brand" href= <%= user_signed_in? ? posts_path : root_path %>>
-        <i class="fa fa-instagram"> </i> | igram
+          <%= image_tag("logo.png", class: "logo", alt: "logo", size: "85x40") %>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
