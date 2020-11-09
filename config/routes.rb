@@ -14,4 +14,6 @@ Rails.application.routes.draw do
 
   post "/posts", to: "posts#create"
   get "/posts/:id/likes", to: "likes#list", as: :like_list
+  get "/users/:id/follower", to: "followers#followers_list", as: :follower_list
+  get "/users/:id/following", to: "followers#following_list", as: :following_list
 end

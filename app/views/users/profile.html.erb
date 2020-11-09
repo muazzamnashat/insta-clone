@@ -19,10 +19,10 @@
                     <%= pluralize(@posts.count, "post") %> 
                 </div>
                 <div class="col-4">
-                    <%= pluralize(@user.followers.count, "follower") %>   
+                    <%= link_to pluralize(@user.followers.count, "follower"), follower_list_path(@user.id), class: "text-dark" %>   
                 </div>
                  <div class="col-4">
-                    <%= @user.followings.count %> following  
+                    <%= link_to (@user.followings.count.to_s + " following"), following_list_path(@user.id), class: "text-dark" %>   
                 </div>
             </div>
 
