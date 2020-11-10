@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
+  #We can use the before_action :authenticate_user! helper from the Devise API in our controllers to require that a user is signed in before they can use the actions we specify.
   before_action :authenticate_user!
-  before_action :set_comment, only: [:edit, :update, :destroy]
+  before_action :set_comment, only: [:edit, :destroy]
 
   def create
     @comment = Comment.new(comment_params)
@@ -19,9 +20,6 @@ class CommentsController < ApplicationController
     post = @comment.post_id
     @comment.destroy
     redirect_to user_post_path(user, post)
-  end
-
-  def update
   end
 
   private

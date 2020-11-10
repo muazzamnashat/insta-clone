@@ -17,12 +17,12 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   def self.from_omniauth(auth)
-    # binding.pry
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
       user.first_name = auth.info.name.split(" ").first
       user.last_name = auth.info.name.split(" ").last
       user.username = auth.info.name.gsub(" ", "")
+      user.image = auth.info.image
       user.uid = auth.uid
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
@@ -32,12 +32,4 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
-
-  # def total_followers
-  #   0
-  # end
-
-  # def total_following
-  #   0
-  # end
 end

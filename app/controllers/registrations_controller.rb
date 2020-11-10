@@ -1,6 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
   def cancel
-    binding.pry
   end
 
   private
