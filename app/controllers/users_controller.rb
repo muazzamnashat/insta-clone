@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
   def profile
     # binding.pry
-    @user = User.find_by(username: params[:username])
     @posts = Post.where(user_id: @user.id)
   end
 

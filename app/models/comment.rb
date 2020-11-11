@@ -16,6 +16,6 @@ class Comment < ApplicationRecord
   end
 
   def decrease_post_comment_counter
-    Post.find_by_id(self.post_id).decrement(:total_comments).save
+    Post.find_by_id(self.post_id).decrement(:total_comments).save if Post.find_by_id(self.post_id)
   end
 end
