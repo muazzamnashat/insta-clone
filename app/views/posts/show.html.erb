@@ -5,8 +5,8 @@
       <div class="col-8">
          <div class="insta-post">
             <%= image_tag @post.image.url, class: "img img-fluid" if @post.image.present? %>   
-            <%= link_to "Edit here", edit_user_post_path(@post.user_id, @post.id) if @post.user_id == current_user.id %> <br>
-            <%= link_to "Delete", user_post_path(@post.user_id, @post.id), method: :delete, data: { confirm: "Do you really want to delete me?" } if @post.user_id == current_user.id %>
+            <%= link_to "Edit here", edit_user_post_path(@post.user_id, @post.id), class: "text-dark" if @post.user_id == current_user.id %> <br>
+            <%= link_to "Delete", user_post_path(@post.user_id, @post.id), class: "text-dark", method: :delete, data: { confirm: "Do you really want to delete me?" } if @post.user_id == current_user.id %>
          </div>
       </div>
       <div class="col-4">
