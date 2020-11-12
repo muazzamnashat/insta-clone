@@ -29,12 +29,6 @@ class UsersController < ApplicationController
     redirect_to posts_path
   end
 
-  def destroy
-    user = User.find_by_id(params[:id])
-    user.destroy
-    redirect_to new_user_session_path
-  end
-
   private
 
   def set_user

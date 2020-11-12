@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :posts, through: :comments
+  has_many :posts, through: :comments, dependent: :destroy
   has_many :followers, class_name: :Follower, foreign_key: :following_id, dependent: :destroy
   has_many :followings, class_name: :Follower, foreign_key: :follower_id, dependent: :destroy
 
