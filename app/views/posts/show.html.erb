@@ -24,7 +24,7 @@
                <i class="fa fa-heart like-<%= @post.id %> <%= "active" if post_liked_by_user?(@post.id) %> fa-2x post-like" data-id="<%= @post.id %>"> </i>
                <i class="fa fa-comment fa-2x post-comment" id="post-comment"> </i>
             </div>
-            <p><strong id="post-<%= @post.id %>-likes"> <%= @post.total_likes %> likes </strong></p>
+            <p><strong id="post-<%= @post.id %>-likes"> <%= link_to pluralize(@post.total_likes, "like"), like_list_path(@post.id), class: "text-dark" %> </strong></p>
             <p class="text-muted"> <%= time_ago_in_words @post.created_at %> ago</p>
          </div>
          <div class="comment-box">

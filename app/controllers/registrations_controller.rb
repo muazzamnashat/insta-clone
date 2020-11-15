@@ -1,8 +1,4 @@
 class RegistrationsController < Devise::RegistrationsController
-  def cancel
-    binding.pry
-  end
-
   private
 
   def sign_up_params
