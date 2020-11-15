@@ -1,4 +1,5 @@
-<h4> Likes </h4>
+<h4> Likes </h4><br>
 <% @users.each do |user| %>
-    <%= link_to user.username, profile_path(user.username), class: "text-dark" %><br>
+    <%= link_to profile_picture(user, 40), profile_path(user.username) %>
+    <strong> <%= user.username %></strong><br><br> 
 <% end %>
