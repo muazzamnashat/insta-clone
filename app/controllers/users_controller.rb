@@ -3,15 +3,20 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:profile]
 
   def profile
-    # binding.pry
     @posts = Post.where(user_id: @user.id)
+    # passing the followers ids so that if current user already follow this user then the follow button does not show up
+    @followers = @user.followers.map { |i| i.follower_id }
   end
 
   def follow_account
     following_id = params[:follow_id]
-    follow = Follower.new(follower_id: current_user.id, following_id: following_id)
+    follow = Follower.create(follower_id: current_user.id, following_id: following_id)
     followee = User.find(following_id)
-    redirect_to posts_path
+    if params[:profile_page]
+      redirect_to params[:profile_page]
+    else
+      redirect_to posts_path
+    end
   end
 
   private

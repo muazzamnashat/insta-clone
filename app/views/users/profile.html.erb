@@ -20,7 +20,19 @@
             <div class="col-4">
                <%= link_to (@user.followings.count.to_s + " following"), following_list_path(@user.id), class: "text-dark" %>   
             </div>
+            <!-- if the user and current user is same and if already following, do not show the follow link   -->
+            <% if @user != current_user && !@followers.include?(current_user.id) %>
+            <div class= "col-4" id="follow-btn">
+               <%= form_tag follow_account_path, method: :post, class: "float-right" do %>
+               <%= hidden_field_tag :follow_id, @user.id %>
+               <%= hidden_field_tag :profile_page, profile_path(@user.username) %>
+               <%= submit_tag "Follow", class: "btn btn-info" %>
+                <% end %>
+            </div>
+            <% end %>
+
          </div>
+
          <p> <%= @user.full_name %> </p>
          <p> <%= simple_format @user.description %> </p>
          <p> <%= link_to @user.website if @user.website.present? %> </p>

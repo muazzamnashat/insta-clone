@@ -1,4 +1,6 @@
 class FollowersController < ApplicationController
+
+  # get a followers list for a particle user
   def followers_list
     ids = User.find_by_id(params[:id]).followers.map { |i| i.follower_id }
     @users = User.where(id: ids)

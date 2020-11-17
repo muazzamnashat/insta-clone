@@ -20,7 +20,7 @@ class LikesController < ApplicationController
   end
 
   def list
-    # binding.pry
+    # get list of users who liked the post
     ids = Like.where(post_id: params[:id]).map { |i| i.user_id }
     @users = User.where(id: ids)
   end
