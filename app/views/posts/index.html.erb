@@ -26,6 +26,11 @@
                <p class="text-muted"> <%= time_ago_in_words post.created_at %> ago</p>
                <%= render "posts/comments", post: post %> 
             </div>
+            
+            <% if @comment.errors.any? %>
+               <h5 class="error"><%= @comment.errors.full_messages.to_sentence %></h5>
+            <% end %>
+
             <div class="comment-box">
                <%= form_for @comment do |f| %> 
                <%= f.hidden_field :post_id, value: post.id %>

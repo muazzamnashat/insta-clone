@@ -6,7 +6,8 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id if user_signed_in?
-    if @comment.save
+    # binding.pry
+    if @comment.save && @comment.valid?
       # added this extra hidden return_to field only to the show page to make sure the comment request is goin from show page so we redirect user to same page
       return_url = params[:comment][:return_to].present? ? user_post_path(@comment.user_id, @comment.post_id) : posts_path
       redirect_to return_url
