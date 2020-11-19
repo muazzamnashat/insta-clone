@@ -35,22 +35,19 @@ class PostsController < ApplicationController
     @comment = Comment.new
     @post = Post.find_by_id(params[:id])
     user = User.find_by_id(params[:user_id])
-    # binding.pry
-
+    #the link can't be accessed with invalid user or post id
     if !@post || !user
       redirect_to posts_path
     end
   end
 
   def edit
-    # binding.pry
     if !@post || @post.user_id != current_user.id
       redirect_to posts_path
     end
   end
 
   def update
-    # binding.pry
     if @post
       @post.update(post_params)
       if @post.errors.any?
@@ -72,7 +69,6 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find_by(id: params[:id])
-    # if params[:id].present?
   end
 
   def post_params
