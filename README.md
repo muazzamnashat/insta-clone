@@ -1,6 +1,6 @@
 # igram
 
-*igram* is a web app that let users post pictures , add comments and follow other users .
+*igram* is a web app that let users post pictures , add comments and follow other users . This is a mvp version created within a very short time and requires future improvement.  
 
 ## Technologies used
 
@@ -19,6 +19,12 @@
 * CRUD functionality
       *  Users can CREATE, READ, UPDATE or DELETE data that belongs to them only
 * Follow users
+
+## Future improvements
+
+* Include user search feature
+* Messaging 
+* 
 
 ## Installation & Setup
 
