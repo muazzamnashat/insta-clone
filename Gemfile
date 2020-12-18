@@ -18,6 +18,9 @@ gem "font-awesome-rails"
 
 gem "devise"
 
+gem "omniauth"
+gem "omniauth-github"
+gem "omniauth-facebook"
 #upload image
 
 gem "carrierwave", "~> 2.0"
@@ -59,9 +62,7 @@ group :development, :test do
   # gem "sqlite3", "~> 1.4"
   #for github login
   gem "dotenv-rails"
-  gem "omniauth"
-  gem "omniauth-github"
-  gem "omniauth-facebook"
+
   #Heroku-friendly Rails app configuration using ENV and a single YAML file
   gem "figaro"
 end
