@@ -12,10 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2020_11_11_013954) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: :cascade do |t|
-    t.string "comment"
-    t.integer "post_id"
-    t.integer "user_id"
+    t.text "comment"
+    t.bigint "post_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6
     t.datetime "updated_at", precision: 6
     t.index ["post_id"], name: "index_comments_on_post_id"
@@ -23,8 +26,8 @@ ActiveRecord::Schema.define(version: 2020_11_11_013954) do
   end
 
   create_table "followers", force: :cascade do |t|
-    t.integer "follower_id"
-    t.integer "following_id"
+    t.bigint "follower_id"
+    t.bigint "following_id"
     t.datetime "created_at", precision: 6
     t.datetime "updated_at", precision: 6
     t.index ["follower_id"], name: "index_followers_on_follower_id"
@@ -32,8 +35,8 @@ ActiveRecord::Schema.define(version: 2020_11_11_013954) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
+    t.bigint "user_id"
+    t.bigint "post_id"
     t.datetime "created_at", precision: 6
     t.datetime "updated_at", precision: 6
     t.index ["post_id"], name: "index_likes_on_post_id"
@@ -41,10 +44,10 @@ ActiveRecord::Schema.define(version: 2020_11_11_013954) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string "image"
+    t.text "image"
     t.boolean "active"
     t.text "description"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6
     t.datetime "updated_at", precision: 6
     t.integer "total_likes"
@@ -53,26 +56,26 @@ ActiveRecord::Schema.define(version: 2020_11_11_013954) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username", limit: 20
-    t.string "first_name", limit: 20
-    t.string "last_name", limit: 20
-    t.string "image"
+    t.text "username"
+    t.text "first_name"
+    t.text "last_name"
+    t.text "image"
     t.text "description"
-    t.string "website"
-    t.string "email", default: ""
-    t.string "encrypted_password", default: ""
-    t.string "reset_password_token"
+    t.text "website"
+    t.text "email", default: ""
+    t.text "encrypted_password", default: ""
+    t.text "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer "sign_in_count", default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
-    t.string "confirmation_token"
+    t.text "current_sign_in_ip"
+    t.text "last_sign_in_ip"
+    t.text "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
+    t.text "unconfirmed_email"
     t.datetime "created_at", precision: 6
     t.datetime "updated_at", precision: 6
     t.string "provider"

@@ -5,7 +5,6 @@ class PostsController < ApplicationController
   def index
     #dashboard- load all the posts
     @posts = Post.active
-
     @comment = Comment.new
 
     #list of ids already followed by the current user

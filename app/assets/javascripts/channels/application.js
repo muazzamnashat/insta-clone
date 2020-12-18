@@ -18,3 +18,7 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+// document.getElementById("post-comment").addEventListener("click",(e) => {
+//     document.getElementById("comment_comment").focus();
+//     console.log("I am clicked");
+// })

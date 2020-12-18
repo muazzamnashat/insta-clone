@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: a65677484e246165735806da09a8f6e7c62f9c61
+  revision: ec06d217644cf3d66bd0e658c9b168af8f0c38c7
   branch: master
   specs:
-    faker (2.14.0)
+    faker (2.15.1)
       i18n (>= 1.6, < 2)
 
 GEM
@@ -74,18 +74,18 @@ GEM
       addressable (>= 2.3.1)
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
-    autoprefixer-rails (10.0.1.3)
+    autoprefixer-rails (10.1.0.0)
       execjs
     bcrypt (3.1.16)
     bindex (0.8.1)
-    bootsnap (1.5.0)
+    bootsnap (1.5.1)
       msgpack (~> 1.0)
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
     builder (3.2.4)
     byebug (11.1.3)
-    capybara (3.33.0)
+    capybara (3.34.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -117,8 +117,8 @@ GEM
       dotenv (= 2.7.6)
       railties (>= 3.2)
     dry-inflector (0.2.0)
-    erubi (1.9.0)
-    excon (0.78.0)
+    erubi (1.10.0)
+    excon (0.78.1)
     execjs (2.7.0)
     extlib (0.9.16)
     faraday (0.17.3)
@@ -226,11 +226,12 @@ GEM
       fog-core (>= 1.45, <= 2.1.0)
       fog-json (>= 1.0)
       ipaddress (>= 0.8)
-    fog-ovirt (1.2.5)
+    fog-ovirt (2.0.0)
+      activesupport
       fog-core
       fog-json
       fog-xml
-      ovirt-engine-sdk (>= 4.1.3)
+      ovirt-engine-sdk (>= 4.3.1)
       rbovirt (~> 0.1.5)
     fog-powerdns (0.2.0)
       fog-core
@@ -273,7 +274,7 @@ GEM
     fog-voxel (0.1.0)
       fog-core
       fog-xml
-    fog-vsphere (3.4.0)
+    fog-vsphere (3.5.0)
       fog-core
       rbvmomi (>= 1.9, < 3)
     fog-xenserver (1.0.0)
@@ -318,14 +319,14 @@ GEM
     ipaddress (0.8.3)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
-    json (2.3.1)
+    json (2.4.1)
     jwt (2.2.2)
     launchy (2.5.0)
       addressable (~> 2.7)
-    listen (3.2.1)
+    listen (3.3.3)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.7.0)
+    loofah (2.8.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -372,11 +373,12 @@ GEM
     os (1.1.1)
     ovirt-engine-sdk (4.4.0)
       json (>= 1, < 3)
+    pg (1.2.3)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (4.0.6)
-    puma (4.3.6)
+    puma (4.3.7)
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-proxy (0.6.5)
@@ -461,14 +463,13 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    tzinfo (1.2.8)
+    tzinfo (1.2.9)
       thread_safe (~> 0.1)
     unf (0.1.4)
       unf_ext
@@ -491,11 +492,11 @@ GEM
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    xml-simple (1.1.5)
-    xmlrpc (0.3.0)
+    xml-simple (1.1.7)
+    xmlrpc (0.3.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.4.1)
+    zeitwerk (2.4.2)
 
 PLATFORMS
   ruby
@@ -520,6 +521,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   omniauth-github
+  pg
   pry
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
@@ -527,7 +529,6 @@ DEPENDENCIES
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
-  sqlite3 (~> 1.4)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)
