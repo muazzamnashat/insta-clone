@@ -39,7 +39,7 @@ Rails.application.configure do
   # changed for heroku
   # config.active_storage.service = :local
 
-  config.active_storage.service = :google
+  # config.active_storage.service = :google
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
