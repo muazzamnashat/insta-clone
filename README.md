@@ -2,6 +2,7 @@
 
 *igram* is a web app that let users post pictures , add comments and follow other users . This is a mvp version created within a very short time and requires future improvement.  
 
+see live: https://insta-clone-igram.herokuapp.com/users/sign_in
 ## Technologies used
 
 * Rails (Sinatra framework)
