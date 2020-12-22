@@ -82,6 +82,8 @@ test:
   timeout: 5000
 
 
-
+production:
+  encoding: utf8
+  pool: 15
 
 
