@@ -273,7 +273,6 @@ Devise.setup do |config|
   # up on your models and hooks.
   config.omniauth :github, ENV["GITHUB_KEY"], ENV["GITHUB_SECRET"], scope: "user:email"
   config.omniauth :facebook, ENV["FACEBOOK_KEY"], ENV["FACEBOOK_SECRET"], scope: "user:email"
-  callback_url :"https://insta-clone-igram.herokuapp.com/users/auth/facebook"
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
