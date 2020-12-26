@@ -5,7 +5,7 @@
 see live: https://insta-clone-igram.herokuapp.com/users/sign_in
 ## Technologies used
 
-* Rails (Sinatra framework)
+* Rails
 * HTML
 * CSS
 * Bootstrap
