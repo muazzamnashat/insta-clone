@@ -16,6 +16,14 @@ class User < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
+  def self.all_liking_post(post_id)
+    join(:likes).where(likes: { post_id: params[:id] } )
+  end
+
+  def post_like(post_id)
+    likes.where(post_id: post_id).first
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider

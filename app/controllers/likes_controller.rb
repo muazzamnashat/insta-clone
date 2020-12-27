@@ -1,8 +1,8 @@
 class LikesController < ApplicationController
   def save_like
-    @like = Like.new(post_id: params[:post_id], user_id: current_user.id)
     @post_id = params[:post_id]
-    existing_like = Like.find_by(post_id: params[:post_id], user_id: current_user.id)
+    @like = Like.new(post_id: @post_id, user: current_user)
+    existing_like = current_user.post_like(@post_id)
     respond_to do |format|
       format.js {
         if existing_like
@@ -19,9 +19,18 @@ class LikesController < ApplicationController
     end
   end
 
+  def new
+    @like.save
+  end
+
+  def delete
+    @like.destroy
+  end
+
   def list
     # get list of users who liked the post
-    ids = Like.where(post_id: params[:id]).map { |i| i.user_id }
-    @users = User.where(id: ids)
+    # @users = User.join(:likes).where(likes: { post_id: params[:id] } )
+    # Created a model method
+    @users = User.all_liking_post(params[:id])
   end
 end
