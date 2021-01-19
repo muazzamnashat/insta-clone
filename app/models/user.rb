@@ -32,4 +32,20 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def post_like(post_id)
+    Like.find_by(post_id: post_id, user_id: self)
+  end
+
+  def self.all_liking_post(post_id)
+    joins(:likes).where(likes: { post_id: post_id })
+  end
+
+  def self.followers_list(user_id)
+    joins(:followers).where(followers: { following_id: user_id })
+  end
+
+  def self.followings_list(user_id)
+    joins(:followers).where(followers: { follower_id: user_id })
+  end
 end
