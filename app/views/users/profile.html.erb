@@ -50,7 +50,7 @@
    </div>
    <div class="row profile-posts">
       <% @posts.each do |post| %>
-      <div class="col-4">
+      <div class="col-4" id="post-view">
          <div class="insta-post post-square" style= "backgroud: url(<%= post.image.url %>) no-repeat center top">
             <%= link_to image_tag(post.image.url, class: "img img-fluid"), user_post_path(post.user.id, post.id) %>
             <%= link_to user_post_path(post.user.id, post.id) do %>

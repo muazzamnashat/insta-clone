@@ -13,16 +13,16 @@ $(function () {
     });
   });
 
-  document
-    .getElementById("post-comment-index-page")
-    .addEventListener("click", (event) => {
-      event.preventDefault();
-      //   debugger;
-      console.log(document.getElementById("comment_comment").value);
-      console.log("I am clicked");
-    });
+  // document
+  //   .getElementById("post-comment-index-page")
+  //   .addEventListener("click", (event) => {
+  //     event.preventDefault();
+  //     //   debugger;
+  //     console.log(document.getElementById("comment_comment").value);
+  //     console.log("I am clicked");
+  //   });
 
-  document.getElementById("search-bar").addEventListener("submit", (event) => {
-    console.log(event.target.search.value);
-  });
+  // document.getElementById("search-bar").addEventListener("submit", (event) => {
+  //   console.log(event.target.search.value);
+  // });
 });
