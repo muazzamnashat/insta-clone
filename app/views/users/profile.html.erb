@@ -29,6 +29,16 @@
                <%= submit_tag "Follow", class: "btn btn-info" %>
                 <% end %>
             </div>
+
+            <% elsif @user != current_user && @followers.include?(current_user.id) %>
+            <div class= "col-4" id="follow-btn">
+               <%= form_tag unfollow_account_path, method: :post, class: "float-right" do %>
+               <%= hidden_field_tag :unfollow_id, @user.id %>
+               <%= hidden_field_tag :profile_page, profile_path(@user.username) %>
+               <%= submit_tag "Unfollow", class: "btn btn-info" %>
+                <% end %>
+            </div>
+
             <% end %>
 
          </div>

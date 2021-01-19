@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "/users/:username", to: "users#profile", as: :profile
   get "/post/like/:post_id", to: "likes#save_like", as: :like_post
   post "/follow/account", to: "users#follow_account", as: :follow_account
+  post "/unfollow/account", to: "users#unfollow_account", as: :unfollow_account
 
   resources :users do
     resources :posts, only: [:show, :create, :new, :edit, :destroy, :update]

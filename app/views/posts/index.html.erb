@@ -30,14 +30,18 @@
             <% if @comment.errors.any? %>
                <h5 class="error"><%= @comment.errors.full_messages.to_sentence %></h5>
             <% end %>
-
+            
+            <%# Comment box %>
+            
             <div class="comment-box">
                <%= form_for @comment do |f| %> 
                <%= f.hidden_field :post_id, value: post.id %>
                <div class="input-group">
-                  <%= f.text_field :comment, placeholder: "Add a comment ...", class: "form-control post-comment" %>
+                  <%= f.text_field :comment, placeholder: "Add a comment ...", class: "form-control post-comment"  %>
                   <div class="input-group-append">
-                     <%= f.submit "Post", class: "btn btn-info float-right" %>
+                  <p id= "post-comment-index-page">
+                  <%= f.submit "Post", class: "btn btn-info float-right"  %>
+                  </p>
                   </div>
                </div>
                <% end %>
