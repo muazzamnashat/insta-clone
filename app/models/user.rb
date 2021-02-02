@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :followers, class_name: :Follower, foreign_key: :following_id, dependent: :destroy
   has_many :followings, class_name: :Follower, foreign_key: :follower_id, dependent: :destroy
 
-  mount_uploader :image, ImageUploader
+  # mount_uploader :image, ImageUploader
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
