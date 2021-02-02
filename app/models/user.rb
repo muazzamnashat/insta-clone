@@ -48,4 +48,14 @@ class User < ApplicationRecord
   def self.followings_list(user_id)
     joins(:followers).where(followers: { follower_id: user_id })
   end
+
+  def self.search(term)
+    search_result = User.where("username LIKE ?", "%" + "#{term}" + "%")
+
+    if search_result.length > 0
+      search_result
+    else
+      User.all
+    end
+  end
 end

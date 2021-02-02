@@ -8,17 +8,17 @@ Rails.application.routes.draw do
   get "/post/like/:post_id", to: "likes#save_like", as: :like_post
   post "/follow/account", to: "users#follow_account", as: :follow_account
   post "/unfollow/account", to: "users#unfollow_account", as: :unfollow_account
-
-  resources :users do
-    resources :posts, only: [:show, :create, :new, :edit, :destroy, :update]
-  end
-
-  resources :posts, only: [:index]
-  resources :comments, only: [:create, :destroy]
-  resources :likes
-
   post "/posts", to: "posts#create"
   get "/posts/:id/likes", to: "likes#list", as: :like_list
   get "/users/:id/follower", to: "followers#followers_list", as: :follower_list
   get "/users/:id/following", to: "followers#following_list", as: :following_list
+  
+  resources :users do
+    resources :posts, only: [:show, :create, :new, :edit, :destroy, :update]
+  end
+  resources :posts, only: [:index]
+  resources :comments, only: [:create, :destroy]
+  resources :likes
+  
+  
 end
