@@ -10,3 +10,4 @@ User.destroy_all
 50.times do
   user = User.create(username: Faker::Artist.name, email: "#{Faker::Code.npi}@gmail.com", password: "123456")
 end
+User.create(username: "test", email: "test@gmail.com", password: "123456")
